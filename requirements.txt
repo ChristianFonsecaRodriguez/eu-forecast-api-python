@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+boto3
+scikit-learn
+pandas
+mlflow==2.0.0
