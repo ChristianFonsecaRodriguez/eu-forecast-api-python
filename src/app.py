@@ -65,11 +65,11 @@ async def predict(input: PredictionInput):
     prediction = random.uniform(0, 100)
     if cropType == 'allCrops':
         if input.country.lower() == 'france':
-            prediction = logged_model_top_g1.predict(data=df)[0]
+            prediction = logged_model_all_g1.predict(data=df)[0]
         elif input.country.lower() in ['italy','türkiye','poland','spain']:
-            prediction = logged_model_top_g2.predict(data=df)[0]
+            prediction = logged_model_all_g2.predict(data=df)[0]
         else:
-            prediction = logged_model_top_g3.predict(data=df)[0]
+            prediction = logged_model_all_g3.predict(data=df)[0]
         
         return {"prediction": round(prediction, 2)}
     
