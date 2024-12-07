@@ -44,7 +44,7 @@ class PredictionInput(BaseModel):
 @app.post("/predict")
 async def predict(input: PredictionInput):
     cropType = input.cropType
-    
+    print(cropType)
     # DataFrame with input data
     df_t2m = pd.DataFrame.from_dict(input.t2m, orient='index').T
     df_rh2m = pd.DataFrame.from_dict(input.rh2m, orient='index').T
@@ -63,7 +63,7 @@ async def predict(input: PredictionInput):
     
     # This is a mock prediction. In a real scenario, you would use a trained model here.
     prediction = random.uniform(0, 100)
-    if cropType == 'All Crops':
+    if cropType == 'allCrops':
         if input.country.lower() == 'france':
             prediction = logged_model_top_g1.predict(data=df)[0]
         elif input.country.lower() in ['italy','türkiye','poland','spain']:
@@ -73,7 +73,7 @@ async def predict(input: PredictionInput):
         
         return {"prediction": round(prediction, 2)}
     
-    elif cropType == 'Top Crop':
+    elif cropType == 'topCrop':
         if input.country.lower() == 'france':
             prediction = logged_model_top_g1.predict(data=df)[0]
         elif input.country.lower() in ['italy','türkiye','poland','spain']:
@@ -88,5 +88,6 @@ async def predict(input: PredictionInput):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
 
