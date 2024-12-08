@@ -69,7 +69,7 @@ class PredictionInputHW(BaseModel):
     crop_type: str
     years: List[int]
 
-@app.post("/predict")
+@app.post("/predict-by-province-info")
 async def predict(input: PredictionInput):
     cropType = input.cropType
     print(cropType)
