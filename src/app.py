@@ -41,7 +41,9 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000","https://3lehpomtiwtoy5aekku2ahoox4cjfzkt.vercel.app"],  # Allow requests from the frontend
+    allow_origins=["http://localhost:3000",
+                   "https://lark-social-tarpon.ngrok-free.app",
+                   ],  # Allow requests from the frontend
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods
     allow_headers=["*"],  # Allow all headers
